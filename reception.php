@@ -1,51 +1,31 @@
 <?php
-define ('SITE_ROOT', realpath(dirname(__FILE__)));
-$extension_upload = strtolower(  substr(  strrchr($_FILES['icone']['name'], '.')  ,1)  );
-$target_dir = SITE_ROOT.'/images/news/';
-chmod($target_dir,0777);
 
+    if ((isset($_POST["isbnaffich"]))) {
+            try {
+                $bdd = new PDO('mysql:host=localhost;dbname=Patrimoire&Media;charset=utf8', 'root', 'root');
+            } catch (Exception $e) {
+                die('Erreur : ' . $e->getMessage());
+            }
+            $val="non";
+            $req = $bdd->prepare("UPDATE books SET News=:b");
+            $req->bindParam("b", $val,PDO::PARAM_STR) ;
+            $req->execute();
 
-$target_file = $target_dir . $_FILES['icone']['name'];
+         $val="oui";
+        foreach($_POST['isbnaffich'] as $valeur)
+        {
+            $req = $bdd->prepare("UPDATE books SET News=:b WHERE ISBN10=:a");
+            $req->bindParam("a", $valeur,PDO::PARAM_INT) ;
+            $req->bindParam("b", $val,PDO::PARAM_STR) ;
+            $req->execute();
+        }
 
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["icone"]["tmp_name"]);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
+        header("Location: index.php?Page=updatenews&action=uploadok");
+       
+        
+    }else{
+        header("Location: index.php?Page=updatenews&action=uploadnotok");
     }
-}
-$target_file = $target_dir.$_POST['namelivre'].'.'.$extension_upload;
-// Check if file already exists
-if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
-// Check file size
-if ($_FILES["icone"]["size"] > 500000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
-// Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-}
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["icone"]["tmp_name"], $target_dir.$_POST['namelivre'].'.'.$extension_upload)) {
-        echo "The file ". $target_dir.$_POST['namelivre'].'.'.$extension_upload . " has been uploaded.";
-    } else {
-        echo "Sorry, there was an error uploading your file.";
-    }
-}
+
+
 ?>

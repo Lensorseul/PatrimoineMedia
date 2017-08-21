@@ -1,4 +1,14 @@
-
+<?php
+            try {
+                $bdd = new PDO('mysql:host=localhost;dbname=Patrimoire&Media;charset=utf8', 'root', 'root');
+            } catch (Exception $e) {
+                die('Erreur : ' . $e->getMessage());
+            }
+        // Vérification des identifiants
+        $req = $bdd->prepare('SELECT * FROM collection');
+        $req->execute();
+        // On affiche chaque entrée une à une
+        ?>
 <!-- Header -->
 <header id="header" class="header-fullwidth header-transparent dark">
     <div id="header-wrap">
@@ -46,17 +56,20 @@
                             <li class="dropdown"><a href="index.php">Accueil</a></li>
                             <li class="dropdown"> <a href="index.php?Page=news">Nouveautés</a>
                             <li class="dropdown"> <a href="index.php?Page=catalogue">Catalogue</a>
-                            <li class="dropdown"> <a href="#">Collections</a>
+                            <li class="dropdown"> <a href="index.php?Page=collection">Collections</a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="index.php?Page=collections&Cat=100ans"><i class="fa fa-spinner"></i>100 ans</a></li>
-                                    <li><a href="index.php?Page=collections&Cat=100ans"><i class="fa fa-spinner"></i>100 ans</a></li>
-                                    <li><a href="index.php?Page=collections&Cat=100ans"><i class="fa fa-spinner"></i>100 ans</a></li>
-                                    <li><a href="index.php?Page=collections&Cat=100ans"><i class="fa fa-spinner"></i>100 ans</a></li>
+                                <?php 
+                                    while ($donnees = $req->fetch()) {
+                                 ?>
+                                    <li><?php echo '<a href="index.php?Page=showcollection&id='.$donnees['Id'].'">'.$donnees['Nomcollection'].'</a>' ?></li>
+                                 <?php
+                                      }
+                                      $req->closeCursor();
+                                  ?>    
                                 </ul>
                             </li>
                             <li class="dropdown"> <a href="index.php?Page=quisommesnous">Qui sommes-nous ?</a>
                             <li class="dropdown"> <a href="index.php?Page=admin">Administration</a>
-
                         </ul>
                     </nav>
                 </div>

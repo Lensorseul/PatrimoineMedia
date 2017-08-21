@@ -5,7 +5,7 @@
                 die('Erreur : ' . $e->getMessage());
             }
         // Vérification des identifiants
-        $req = $bdd->prepare('SELECT ISBN10,Titre FROM books');
+        $req = $bdd->prepare('SELECT * FROM books');
         $req->execute();
         // On affiche chaque entrée une à une
         ?>
@@ -13,7 +13,7 @@
 <section id="page-title" data-parallax-image="images/menu/2.png">
     <div class="container">
         <div class="page-title">
-            <h1>Update</h1>
+            <h1>Suppression de livre</h1>
             <span></span>
         </div>
     </div>
@@ -23,10 +23,10 @@
 
 <section>
     <div class="container">
-<div class="hr-title hr-long center"><abbr>Formulaire de modification des actualités</abbr> </div>
+<div class="hr-title hr-long center"><abbr>Formulaire de suppression </abbr> </div>
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <form method="post" action="reception.php" enctype="multipart/form-data" name="reception"> 
+                <form method="post" action="supplivre.php" enctype="multipart/form-data" name="supplivre"> 
                 <?php
                     if (isset($_GET['action'])) {
                         if ($_GET['action'] == "uploadok") {
@@ -46,7 +46,7 @@
                             ?>
                     <div class="row">
                         <div class="col-md-12"><div class="form-group">
-                                <label class="upper" for="num">Séléctionner les livres a afficher dans les Nouveautés :</label>
+                                <label class="upper" for="num">Séléctionner le(s) livre(s) à supprimer :</label>
                                     <select multiple name="isbnaffich[]">
                                     <?php 
                                     while ($donnees = $req->fetch()) {

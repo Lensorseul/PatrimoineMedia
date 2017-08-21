@@ -36,12 +36,12 @@
                             <div class="widget">
                                 <h4>Menu</h4>
                                 <ul class="list-icon list-icon-arrow">
-                                    <li><a href="#">Accueil</a></li>
-                                    <li><a href="#">Nouveautés</a></li>
-                                    <li><a href="#">Collextions</a></li>
-                                    <li><a href="#">Catalogue</a></li>
-                                    <li><a href="#">Recherche</a></li>
-                                    <li><a href="#">Qui sommes-nous ?</a></li>
+                                    <li><a href="index.php">Accueil</a></li>
+                                    <li><a href="index.php?Page=news">Nouveautés</a></li>
+                                    <li><a href="index.php?Page=catalogue">Collextions</a></li>
+                                    <li><a href="index.php?Page=collection">Catalogue</a></li>
+                                    <li><a href="index.php?Page=quisommesnous">Qui sommes-nous ?</a></li>
+                                    <li><a href="index.php?Page=admin">Administration</a></li>
                                 </ul>
                             </div>
                             <!-- end: Footer widget area 2 -->

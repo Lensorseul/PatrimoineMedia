@@ -1,46 +1,53 @@
-
-<!-- Page title -->
-<section id="page-title" data-parallax-image="images/menu/2.png">
-    <div class="container">
-        <div class="breadcrumb">
-                    <h3><i class="fa fa-arrow-circle-left"></i><a href="#" onclick="history.go(-1);" style="text-decoration:none"> Retour</a></h3>
-                </div>
-        <div class="page-title">
-            <h1>Catalogue</h1>
-        </div>
-    </div>
-</section>
-<!-- end: Page title -->
-
-<!-- Content     file:///C:/Apache24/htdocs/HTML/shop-single-product.html  -->
-<!-- BLOG -->
-<!-- Shop products -->
-<section>
-    <div class="container">
-        <div class="row m-b-20">
-            <div class="hr-title hr-long center"><abbr>Catalogue des livres disponibles</abbr> </div>
-        </div>
-
-
-
-
-
-
-<div id="blog" class="grid-layout post-3-columns m-b-30" data-item="post-item">
 <?php
             try {
                 $bdd = new PDO('mysql:host=localhost;dbname=Patrimoire&Media;charset=utf8', 'root', 'root');
             } catch (Exception $e) {
                 die('Erreur : ' . $e->getMessage());
             }
+            if(isset($_GET['id'])){
+                $id=$_GET['id'];
+                // Vérification des identifiants
+                $req = $bdd->prepare('SELECT * FROM books inner join collection on books.Idcollection = collection.Id where Idcollection=:id');
+                $req->bindParam("id", $id,PDO::PARAM_INT) ;
+                $req->execute();
+                $res = $req->fetchAll();
+                ?>
 
-// Vérification des identifiants
-        $req = $bdd->prepare('SELECT * FROM books inner join collection on books.Idcollection = collection.Id');
-        $req->execute();
+<!-- Page title -->
+<section id="page-title" data-parallax-image="images/menu/2.png">
+    <div class="container">
+    <div class="breadcrumb">
+                    <h3><i class="fa fa-arrow-circle-left"></i><a href="#" onclick="history.go(-1);" style="text-decoration:none"> Retour</a></h3>
+                </div>
+        <div class="page-title">
+            <h1>Collection spécifique</h1>
+        </div>
+    </div>
+</section>
+<!-- end: Page title -->
 
 
-// On affiche chaque entrée une à une
-        while ($donnees = $req->fetch()) {
+<section>
+    <div class="container">
+        <div class="row m-b-20">
+        <div class="hr-title hr-long center">
+<?php 
+if(empty($res)){
+  echo '<abbr>Collection incorrecte</abbr>';
+}else{
+    echo '<abbr>Catalogue complet pour la collection ' .$res[0]['Nomcollection']. '</abbr>';
+}
+?>
+</div>
+</div>
+<div id="blog" class="grid-layout post-3-columns m-b-30" data-item="post-item">
+
+
+            
+        
+<?php
+    // On affiche chaque entrée une à une
+        foreach ($res as $donnees) {
                 ?>
         
 <!-- Post item-->
@@ -90,3 +97,7 @@
     </div>
 </section>
 <!-- end: Shop products -->
+<?php 
+
+}
+?>

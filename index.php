@@ -9,6 +9,7 @@ session_start();
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="Toulouze Franck" />
         <meta name="description" content="Site de patrimoine et média">
+        <link rel="icon" href="favicon.ico" />
         <!-- Document title -->
         <title>Patrimoine et Média</title>
         <!-- Stylesheets & Fonts -->
