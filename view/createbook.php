@@ -1,6 +1,6 @@
 <?php
             try {
-                $bdd = new PDO('mysql:host=localhost;dbname=Patrimoire&Media;charset=utf8', 'root', 'root');
+                $bdd = new PDO('mysql:host=localhost;dbname=patrimoire&media;charset=utf8', 'root', 'root');
             } catch (Exception $e) {
                 die('Erreur : ' . $e->getMessage());
             }
@@ -10,8 +10,11 @@
         // On affiche chaque entrée une à une
         ?>
 <!-- Page title -->
-<section id="page-title" data-parallax-image="images/menu/2.png">
+<section id="page-title" data-parallax-image="images/menu/2.png">mi
     <div class="container">
+        <div class="breadcrumb">
+                    <h3><i class="fa fa-arrow-circle-left"></i><a href="#" onclick="history.go(-1);" style="text-decoration:none"> Retour</a></h3>
+                </div>
         <div class="page-title">
                     <h1>Créer un livre</h1>
         </div>
@@ -188,6 +191,14 @@
                             <div class="form-group">
                                 <label class="upper" for="icone">Extrait du livre (format JPG, JPEG, PNG et GIF) :</label>
                                 <input type="file" class="form-control required" name="icone2" id="icone2" aria-required="true"/>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="upper" for="icone">Fiche technique du livre (format PDF) :</label>
+                                <input type="file" class="form-control required" name="fichtech" id="fichtech" aria-required="true"/>
                             </div>
                         </div>
                     </div>

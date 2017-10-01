@@ -15,7 +15,7 @@
 
                 <!--Grid system -->
                 <div class="grid-system-demo-live">
-                    <div class="hr-title hr-long center"><abbr>Descriptif des éditions Patrimoine et Média</abbr> </div>
+                    <div class="hr-title hr-long center"><abbr>Descriptif des éditions Patrimoines et Médias</abbr> </div>
                     <div class="row">
                         <div class="col-md-12">
                             <h5>Les éditions Patrimoines et Médias sont nées en avril 1992, à l'initiative de Philippe Floris et Pascal Talon. Les premières publications ont été consacrées à la collection Châteaux, Manoirs et Logis mais, très vite, d'autres sujets ont été abordés : fortifications maritimes, phares, curiosités, tourisme...<br><br>

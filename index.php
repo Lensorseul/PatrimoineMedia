@@ -8,10 +8,10 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="Toulouze Franck" />
-        <meta name="description" content="Site de patrimoine et média">
+        <meta name="description" content="Site de patrimoines et médias">
         <link rel="icon" href="favicon.ico" />
         <!-- Document title -->
-        <title>Patrimoine et Média</title>
+        <title>Patrimoines et Médias</title>
         <!-- Stylesheets & Fonts -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,800,700,600|Montserrat:400,500,600,700|Raleway:100,300,600,700,800" rel="stylesheet" type="text/css" />
         <link href="css/plugins.css" rel="stylesheet">
@@ -78,7 +78,6 @@ session_start();
         <!-- end: Wrapper -->
 
         <!-- Go to top button -->
-        <a id="goToTop"><i class="fa fa-angle-up top-icon"></i><i class="fa fa-angle-up"></i></a>
 
         <!--Plugins-->
         <script src="js/jquery.js"></script>

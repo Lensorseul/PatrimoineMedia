@@ -1,6 +1,6 @@
 <?php
             try {
-                $bdd = new PDO('mysql:host=localhost;dbname=Patrimoire&Media;charset=utf8', 'root', 'root');
+                $bdd = new PDO('mysql:host=localhost;dbname=patrimoire&media;charset=utf8', 'root', 'root');
             } catch (Exception $e) {
                 die('Erreur : ' . $e->getMessage());
             }
@@ -54,8 +54,8 @@
                     <nav>
                         <ul>
                             <li class="dropdown"><a href="index.php">Accueil</a></li>
-                            <li class="dropdown"> <a href="index.php?Page=news">Nouveautés</a>
-                            <li class="dropdown"> <a href="index.php?Page=catalogue">Catalogue</a>
+                            <li class="dropdown"> <a href="index.php?Page=news">A la une</a>
+                            <!--<li class="dropdown"> <a href="index.php?Page=catalogue">Catalogue</a>-->
                             <li class="dropdown"> <a href="index.php?Page=collection">Collections</a>
                                 <ul class="dropdown-menu">
                                 <?php 
@@ -69,7 +69,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown"> <a href="index.php?Page=quisommesnous">Qui sommes-nous ?</a>
-                            <li class="dropdown"> <a href="index.php?Page=admin">Administration</a>
+                            <li class="dropdown"> <a href="#footer">Contact</a>
                         </ul>
                     </nav>
                 </div>

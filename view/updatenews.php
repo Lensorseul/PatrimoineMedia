@@ -1,6 +1,6 @@
 <?php
             try {
-                $bdd = new PDO('mysql:host=localhost;dbname=Patrimoire&Media;charset=utf8', 'root', 'root');
+                $bdd = new PDO('mysql:host=localhost;dbname=patrimoire&media;charset=utf8', 'root', 'root');
             } catch (Exception $e) {
                 die('Erreur : ' . $e->getMessage());
             }
@@ -12,6 +12,9 @@
 <!-- Page title -->
 <section id="page-title" data-parallax-image="images/menu/2.png">
     <div class="container">
+        <div class="breadcrumb">
+                    <h3><i class="fa fa-arrow-circle-left"></i><a href="#" onclick="history.go(-1);" style="text-decoration:none"> Retour</a></h3>
+                </div>
         <div class="page-title">
             <h1>Update</h1>
             <span></span>

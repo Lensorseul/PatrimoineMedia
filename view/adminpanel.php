@@ -2,6 +2,9 @@
 <!-- Page title -->
 <section id="page-title" data-parallax-image="images/menu/2.png">
     <div class="container">
+        <div class="breadcrumb">
+                    <h3><i class="fa fa-arrow-circle-left"></i><a href="#" onclick="history.go(-1);" style="text-decoration:none"> Retour</a></h3>
+                </div>
         <div class="page-title">
             <h1>Administration</h1>
             <span></span>

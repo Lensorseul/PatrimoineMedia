@@ -80,7 +80,19 @@ if($imageFileType2 != "jpg" && $imageFileType2 != "png" && $imageFileType2 != "j
 
 
 
+$target_file3 = $target_dir . $_FILES['fichtech']['name'];
 
+$uploadOk3 = 1;
+// Check file size
+if ($_FILES["fichtech"]["size"] > 5000000) {
+        header("Location: index.php?Page=updatenews&action=filetoolarge");
+        $uploadOk3 = 0;
+}
+if ($_FILES["fichtech"]['type'] != "application/pdf") {
+        header("Location: index.php?Page=updatenews&action=fileformat");
+        //echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk3 = 0;
+}   
 
 
 
@@ -98,7 +110,7 @@ if($imageFileType2 != "jpg" && $imageFileType2 != "png" && $imageFileType2 != "j
 
 
 // Check if $uploadOk is set to 0 by an error
-if (($uploadOk == 0) || ($uploadOk2 ==0)) {
+if (($uploadOk == 0) || ($uploadOk2 ==0)|| ($uploadOk3 ==0)) {
     header("Location: index.php?Page=createbook&action=uploadnotok");
     //echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
@@ -122,7 +134,7 @@ if (($uploadOk == 0) || ($uploadOk2 ==0)) {
     
 
     try {
-            $bdd = new PDO('mysql:host=localhost;dbname=Patrimoire&Media;charset=utf8', 'root', 'root');
+            $bdd = new PDO('mysql:host=localhost;dbname=patrimoire&media;charset=utf8', 'root', 'root');
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
@@ -147,7 +159,7 @@ if (($uploadOk == 0) || ($uploadOk2 ==0)) {
         
         $req->execute();
 
-        if (move_uploaded_file($_FILES["icone"]["tmp_name"], $target_dir.$_POST['isbn10'].'.'.$extension_upload) && move_uploaded_file($_FILES["icone2"]["tmp_name"], $target_dir.$_POST['isbn10'].'-2.'.$extension_upload2)) {
+        if (move_uploaded_file($_FILES["icone"]["tmp_name"], $target_dir.$_POST['isbn10'].'.'.$extension_upload) && move_uploaded_file($_FILES["icone2"]["tmp_name"], $target_dir.$_POST['isbn10'].'-2.'.$extension_upload2) && move_uploaded_file($_FILES["fichtech"]["tmp_name"], $target_dir.$_POST['isbn10'].'-fiche-technique.pdf')) {
             header("Location: index.php?Page=createbook&action=uploadok");
         } else {
             header("Location: index.php?Page=createbook&action=uploadnotok");

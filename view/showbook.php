@@ -1,6 +1,6 @@
 <?php
             try {
-                $bdd = new PDO('mysql:host=localhost;dbname=Patrimoire&Media;charset=utf8', 'root', 'root');
+                $bdd = new PDO('mysql:host=localhost;dbname=patrimoire&media;charset=utf8', 'root', 'root');
             } catch (Exception $e) {
                 die('Erreur : ' . $e->getMessage());
             }
@@ -34,7 +34,7 @@
             <div class="container">
                 <div class="product">
                     <div class="row m-b-40">
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <div class="product-image">
                                 <!-- Carousel slider -->
                                 <div class="carousel dots-inside dots-dark arrows-visible arrows-only arrows-dark" data-items="1" data-loop="true" data-autoplay="true" data-animate-in="fadeIn" data-animate-out="fadeOut" data-autoplay-timeout="2500" data-lightbox="gallery">
@@ -48,13 +48,13 @@
                         </div>
 
 
-                        <div class="col-md-7">
+                        <div class="col-md-6">
                             <div class="product-description">
                                 
                                 <div class="product-title">
                                     <h3><?php echo $donnees['Titre']; ?></h3>
                                 </div>
-                                <div class="product-category">Auteurs : <?php echo $donnees['Auteurs']; ?></div>
+                                <div class="product-category">ISBN : <?php echo $donnees['ISBN10']; ?></div>
                                 <div class="product-category">Collection : <?php echo $donnees['Nomcollection']; ?></div>
                                 <div class="product-price"><ins><?php echo $donnees['Prix']; ?> €</ins>
                                 </div>
@@ -62,8 +62,12 @@
                                 <br><br><br><br><br><br><br><br><br>
                                 <div class="product-meta">
                                 </div>
-                                <div class="m-t-20 m-b-10"></div>
-                                    <button type="button" class="btn btn-light btn-creative btn-icon-holder btn-shadow btn-light-hover">Acheter le livre<i class="fa fa-arrow-right"></i></button>
+                                <div class="row">
+
+                                <a class="btn btn-light btn-icon-holder btn-shadow btn-light-hover btn-light-hover" href="images/audio-bg.jpg" >Acheter le livre <i class="fa fa-arrow-right"></i></a>
+
+<?php echo '<a class="btn btn-light btn-icon-holder btn-shadow btn-light-hover btn-light-hover" href="images/books/'.$donnees['ISBN10'].'/'.$donnees['ISBN10'].'-fiche-technique.pdf" download>Télécharger la fiche technique <i class="fa fa-download"></i></a>' ?>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -71,7 +75,7 @@
                     <div id="tabs-1" class="tabs simple">
                         <ul class="tabs-navigation">
                             <li class="active"><a href="#tab1"><i class="fa fa-align-justify"></i>Description</a> </li>
-                            <li><a href="#tab2"><i class="fa fa-info"></i>Additional Info</a> </li>
+                            <li><a href="#tab2"><i class="fa fa-info"></i>Fiche de présentation</a> </li>
                         </ul>
                         <div class="tabs-content">
                             <div class="tab-pane active" id="tab1">

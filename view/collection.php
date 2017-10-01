@@ -1,6 +1,6 @@
 <?php
             try {
-                $bdd = new PDO('mysql:host=localhost;dbname=Patrimoire&Media;charset=utf8', 'root', 'root');
+                $bdd = new PDO('mysql:host=localhost;dbname=patrimoire&media;charset=utf8', 'root', 'root');
             } catch (Exception $e) {
                 die('Erreur : ' . $e->getMessage());
             }
@@ -28,12 +28,13 @@
 
     <!--Square colored icons-->
                 <div class="hr-title hr-long center"><abbr>Liste des collections disponibles</abbr> </div>
+                <div class="row">
 
 
     <?php 
                                     while ($donnees = $req->fetch()) {
                                     ?>
-                                    <div class="row">
+                                    
                                     <div class="col-md-6">
                                       <div class="icon-box effect medium square color">
                                       <div class="icon"> <?php echo '<a href="index.php?Page=showcollection&id='.$donnees['Id'].'"><i class="fa fa-book"></i></a>' ?> </div>
